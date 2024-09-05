@@ -1,4 +1,4 @@
-- name: Run Docker Compose
-  shell: docker compose up -d
+- name: Restart Docker Compose
+  shell: docker compose up -d --force-recreate
   args:
     chdir: /opt/{{ project_folder }}
