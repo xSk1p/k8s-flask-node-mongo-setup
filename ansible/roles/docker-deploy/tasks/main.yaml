@@ -6,7 +6,7 @@
 
 - name: Deploy docker-compose.yaml
   copy:
-    copy: docker-compose.yaml
+    src: docker-compose.yaml
     dest: /opt/{{ project_folder }}/docker-compose.yaml
 
 - name: Deploy .env file
