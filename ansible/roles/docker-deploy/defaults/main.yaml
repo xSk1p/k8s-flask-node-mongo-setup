@@ -1,4 +1,9 @@
+project_folder: "/opt/cr_services"
+
 mongo_version: "latest"
 api_version: "latest"
 app_version: "latest"
-project_folder: "/opt/cr_services"
+
+default_mongo_uri: mongodb://mongo:27017/cr-db
+default_db_name: cr-db
+default_api_url: http://api:3001/users

@@ -8,8 +8,13 @@
   template:
     src: docker-compose.yaml
     dest: /opt/{{ project_folder }}/docker-compose.yaml
+  notify:
+    - Restart Docker Compose
 
-- name: Run Docker Compose
-  shell: docker compose up -d
-  args:
-    chdir: /opt/{{ project_folder }}
+- name: Deploy .env file
+  template:
+    src: ".env.j2"
+    dest: "/opt/{{ project_folder }}/.env"
+    mode: '0644'
+  notify:
+    - Restart Docker Compose

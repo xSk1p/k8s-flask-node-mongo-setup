@@ -1,0 +1,4 @@
+- name: Run Docker Compose
+  shell: docker compose up -d
+  args:
+    chdir: /opt/{{ project_folder }}
