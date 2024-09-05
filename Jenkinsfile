@@ -6,6 +6,7 @@ pipeline {
         IMAGE_NAME_API = 'xskip/cr-api'
         IMAGE_NAME_APP = 'xskip/cr-app'
         IMAGE_NAME_MONGO ='xskip/cr-mongo'
+        ANSIBLE_HOST_KEY_CHECKING = "False"
     }
 
   stages {

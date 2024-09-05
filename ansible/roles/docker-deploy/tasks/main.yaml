@@ -10,6 +10,6 @@
     dest: /opt/{{ project_folder }}/docker-compose.yaml
 
 - name: Run Docker Compose
-  shell: docker-compose up -d
+  shell: docker compose up -d
   args:
     chdir: /opt/{{ project_folder }}
