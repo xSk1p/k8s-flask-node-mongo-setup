@@ -1,0 +1,4 @@
+mongo_version: "latest"
+api_version: "latest"
+app_version: "latest"
+project_folder: "/opt/cr_services"

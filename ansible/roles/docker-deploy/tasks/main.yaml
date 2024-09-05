@@ -1,0 +1,15 @@
+- name: Create directory for docker-compose
+  file:
+    path: /opt/{{ project_folder }}
+    state: directory
+    mode: '0755'
+
+- name: Deploy docker-compose.yaml
+  template:
+    src: docker-compose.yaml
+    dest: /opt/{{ project_folder }}/docker-compose.yaml
+
+- name: Run Docker Compose
+  shell: docker-compose up -d
+  args:
+    chdir: /opt/{{ project_folder }}

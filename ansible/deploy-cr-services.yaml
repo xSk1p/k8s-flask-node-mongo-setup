@@ -1,0 +1,4 @@
+- hosts: deploy-servers
+  become: yes
+  roles:
+    - docker-deploy

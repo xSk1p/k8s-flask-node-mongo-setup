@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     echo "Building ${IMAGE_NAME_MONGO} Image..."
-                    docker.build("${IMAGE_NAME_MONGO}:latest", "./mongo")
+                    docker.build("${IMAGE_NAME_MONGO}:latest", "./mongoDB")
 
                     echo "Building ${IMAGE_NAME_API} Image..."
                     docker.build("${IMAGE_NAME_API}:latest", "./backend")
@@ -42,10 +42,16 @@ pipeline {
             }
         }
 
-        stage('Deploy Images on server') {
+        stage('Deploy Images') {
             steps {
-                script {
-                   echo "Deploying..."
+                withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-credentials', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')]) {
+                    script {
+                        ansiblePlaybook(
+                            playbook: 'deploy-cr-services.yaml',
+                            inventory: 'inventory.ini',
+                            extras: '-e ansible_user=${SSH_USER} -e ansible_ssh_private_key_file=${SSH_KEY}'
+                        )
+                    }
                 }
             }
         }

@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mongo:
+    image: xskip/cr-mongo:${mongo_version}
+    container_name: mongo
+    ports:
+      - "27017:27017"
+
+  api:
+    image: xskip/cr-api:${api_version}
+    container_name: api
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    env_file:
+      - .env
+ 
+  app:
+    image: xskip/cr-app:${app_version}
+    container_name: app
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    environment:
+      - API_URL=${API_URL}
