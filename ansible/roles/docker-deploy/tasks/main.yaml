@@ -16,3 +16,8 @@
     mode: '0644'
   notify:
     - Restart Docker Compose
+
+- name: Start Docker Compose
+  shell: docker compose up -d
+  args:
+    chdir: /opt/{{ project_folder }}
