@@ -1,13 +1,13 @@
 version: '3'
 services:
   mongo:
-    image: xskip/cr-mongo:${mongo_version}
+    image: xskip/cr-mongo:${MONGO_VERSION}
     container_name: mongo
     ports:
       - "27017:27017"
 
   api:
-    image: xskip/cr-api:${api_version}
+    image: xskip/cr-api:${API_VERSION}
     container_name: api
     ports:
       - "3001:3001"
@@ -17,7 +17,7 @@ services:
       - .env
  
   app:
-    image: xskip/cr-app:${app_version}
+    image: xskip/cr-app:${APP_VERSION}
     container_name: app
     ports:
       - "80:80"
