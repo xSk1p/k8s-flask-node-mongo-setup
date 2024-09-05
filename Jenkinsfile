@@ -47,8 +47,8 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-deploy-credentials', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')]) {
                     script {
                         ansiblePlaybook(
-                            playbook: 'deploy-cr-services.yaml',
-                            inventory: 'inventory.ini',
+                            playbook: 'ansible/deploy-cr-services.yaml',
+                            inventory: 'ansible/inventory.ini',
                             extras: '-e ansible_user=${SSH_USER} -e ansible_ssh_private_key_file=${SSH_KEY}'
                         )
                     }
