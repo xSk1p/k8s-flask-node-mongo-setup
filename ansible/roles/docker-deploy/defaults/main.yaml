@@ -1,4 +1,4 @@
-project_folder: "/opt/cr_services"
+project_folder: "cr_services"
 
 mongo_version: "latest"
 api_version: "latest"
