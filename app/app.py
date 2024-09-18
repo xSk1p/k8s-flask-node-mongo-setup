@@ -1,8 +1,11 @@
 from flask import Flask, render_template, jsonify
 import requests
 import os
+from prometheus_flask_exporter import PrometheusMetrics
+
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 API_URL = os.getenv('API_URL', 'http://localhost:3001/users')
 
