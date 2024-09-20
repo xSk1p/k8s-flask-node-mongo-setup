@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  MONGO_URI: {{ .Values.config.MONGO_URI | quote }}
+  DB_NAME: {{ .Values.config.DB_NAME | quote }}
